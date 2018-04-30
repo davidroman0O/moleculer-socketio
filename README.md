@@ -130,7 +130,46 @@ namespaces: {
 }
 ```
 
-# Example
+# Custom response
+
+One more thing, you can also manage custom responses.
+
+```javascript
+const SocketIO = require("moleculer-socketio");
+
+module.exports = {
+	name: "socket-service",
+
+	mixins: [ SocketIO ],
+
+	settings: {
+		port: 5000,
+        options: {
+			//	Socket.io options
+		},
+		response: (event, error, results) => {
+			// Response Templated
+			let payload = {};
+			if (!error) {
+				if (results.length > 1) {
+					results.map((r, index) => {
+						payload[event.actions[index]] = r;
+					});
+				} else {
+					payload = results[0];
+				}
+			}
+			return {
+				error: error,
+				payload: payload
+			};
+		},
+	},
+    
+};
+```
+
+# EXAMPLE
 
 ```javascript
 
