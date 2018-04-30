@@ -96,9 +96,6 @@ module.exports = {
 
 
 
-```
-
-
 This should be on client side
 
 ```javascript
@@ -115,8 +112,5 @@ this.socket.on("all", (data) => {
 this.socket.on('timer', timestamp => console.log("TIMER IS", timestamp));
 this.socket.emit('subscribeToTimer', 1000);
 
-<<<<<<< HEAD
 ```
-=======
-```
->>>>>>> 60b52c465996f3997f097ea8474455ac5d2be5cb
+
